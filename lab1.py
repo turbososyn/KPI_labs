@@ -1,7 +1,7 @@
 import asyncio
 import time
 from typing import Callable, List, Any
-# Adebounce function that adds a delay if the task is running very quickly
+# A debounce function that adds a delay if the task is running very quickly
 
 async def debounce(func: Callable, delay: float, *args, **kwargs):
     start_time = time.time()
@@ -20,3 +20,10 @@ async def async_map(func: Callable, iterable: List[Any]) -> List[Any]:
 async def async_square(x: int) -> int:
     await asyncio.sleep(2) 
     return x * x
+async def demo():
+    numbers = [1, 2, 3, 4, 5]
+    results = await async_map(async_square, numbers)
+    print(f"Results after async_map: {results}")
+    debounced_results = await debounce(async_map, 3, async_square, numbers)
+    print(f"Results after debounce: {debounced_results}")
+asyncio.run(demo())
