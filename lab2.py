@@ -11,3 +11,6 @@ async def debounce(func: Callable, delay: float, *args, **kwargs):
     if elapsed_time < delay:
         await asyncio.sleep(delay - elapsed_time)
     return result
+async def async_square(x: int) -> int:
+    await asyncio.sleep(2)  # Імітуємо затримку
+    return x * x
