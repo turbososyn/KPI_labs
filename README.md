@@ -28,16 +28,16 @@ Create a Promise-based alternative to the async_map function and then write exam
 
 ## Explanation of the code:
 
-### Creating a Promise-based Alternative
+### Creating a Promise-based Alternative:
 Python doesn't have a native Promise object like JavaScript, but we can use asyncio.create_task() to simulate the asynchronous behavior of Promises. This creates a task that can run concurrently with other tasks.
 I created a helper function called promise_delay to wrap the asynchronous function and simulate the "Promise-like" behavior in Python. This wrapper is like the Promise constructor in JavaScript, which resolves the result asynchronously.
 
-### Implement the promise_map Function
+### Implement the promise_map Function:
 The promise_map function is designed to map an asynchronous function (like async_square) onto an iterable and execute the functions concurrently.
 
-### Creating the Async-Await Solution
+### Creating the Async-Await Solution:
 In the async-await solution, we simply use asyncio.gather (similar to Promise.all in JavaScript) to handle concurrent execution.
 The async_map function is an asynchronous version of map that runs all tasks concurrently.
 
-### Demonstrating the Promise and Async-Await Solutions
+### Demonstrating the Promise and Async-Await Solutions:
 To demonstrate the Promise-based solution, we create a list of "promises" using promise_map, and then we wait for all of them to resolve using handle_promises.
