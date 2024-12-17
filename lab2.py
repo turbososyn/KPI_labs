@@ -14,3 +14,9 @@ async def debounce(func: Callable, delay: float, *args, **kwargs):
 async def async_square(x: int) -> int:
     await asyncio.sleep(2)  # Імітуємо затримку
     return x * x
+async def async_map_with_await(func: Callable, iterable: List[Any]) -> List[Any]:
+    results = []
+    for item in iterable:
+        result = await func(item)
+        results.append(result)
+    return results
