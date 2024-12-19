@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 # Lab 1 task:
 
 The task is to create an asynchronous version of an array function (eg map, filter, some, find, findIndex). It is also necessary to add a function that provides an additional execution delay if the task completes in less time than a certain limit.
