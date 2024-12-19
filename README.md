@@ -42,7 +42,6 @@ The async_map function is an asynchronous version of map that runs all tasks con
 ### Demonstrating the Promise and Async-Await Solutions:
 To demonstrate the Promise-based solution, we create a list of "promises" using promise_map, and then we wait for all of them to resolve using handle_promises.
 
-
 # Lab 3 task:
 
 Task 3 is about integrating a cancellation mechanism into asynchronous operations, allowing tasks to be aborted if needed.
@@ -62,7 +61,7 @@ Graceful Handling: When a task is cancelled, it raises an error like CancelledEr
 This function processes each element in an array asynchronously using the async_fn function (which simulates an asynchronous operation). It creates tasks for each item in the array, runs them concurrently, and collects the results.
 The try block waits for all tasks to complete using asyncio.gather. If any task is cancelled, it catches the CancelledError and prints a cancellation message.
 
-## Async_operation Function:
+### Async_operation Function:
 
 This function simulates an asynchronous task (e.g., multiplying a number) that can be cancelled. It sleeps for 1 second to simulate a delay, and if the task is cancelled, it raises a CancelledError to stop further execution.
 
