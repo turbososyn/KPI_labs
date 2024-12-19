@@ -118,3 +118,41 @@ Then, it calls process_data() to start the asynchronous processing and writing o
 
 This line runs the asynchronous event loop that executes the main() function.
 
+# Lab 5 task:
+
+Task 5 is about reactive message-based communication between entities, using observables or event-driven communication. To demonstrate this concept in Python, we can utilize the asyncio library combined with Python's asyncio.Queue to simulate an event-driven system. We will create a system where entities can communicate with each other via message queues, and messages will be processed asynchronously.
+
+## Explanation of the code:
+
+### Key Components:
+
+#### Observable Class:
+
+Holds a list of subscribers (subscribers).
+subscribe() adds subscribers.
+notify() sends messages to all subscribers asynchronously.
+
+#### Send_message():
+
+Sends a message to the observable, which notifies all subscribers.
+
+#### Message_listener():
+
+Listens for messages from a queue, processes them, and logs them.
+Stops when receiving a None message (shutdown signal).
+
+#### Main():
+
+Sets up the observable and two listeners.
+Sends messages to the observable.
+Listeners process messages and stop when receiving a None.
+
+#### Process:
+
+Observable notifies subscribers with messages.
+Listeners process the messages asynchronously and log them.
+Graceful shutdown: A None message stops the listeners.
+
+#### Example Output:
+Console: Lists when listeners receive and process messages.
+Log File: Logs processed messages with timestamps.
