@@ -41,3 +41,39 @@ The async_map function is an asynchronous version of map that runs all tasks con
 
 ### Demonstrating the Promise and Async-Await Solutions:
 To demonstrate the Promise-based solution, we create a list of "promises" using promise_map, and then we wait for all of them to resolve using handle_promises.
+
+
+# Lab 3 task:
+
+Task 3 is about integrating a cancellation mechanism into asynchronous operations, allowing tasks to be aborted if needed.
+
+In JavaScript, you use AbortController to cancel tasks, while in Python, we use asyncio.CancelledError and task.cancel() to cancel ongoing async tasks.
+
+### Key points:
+
+Cancellation Support: You can cancel tasks (e.g., network requests, long computations) before they finish.
+
+Graceful Handling: When a task is cancelled, it raises an error like CancelledError to stop execution cleanly.
+
+## Explanation of the code:
+
+### Async_map Function:
+
+This function processes each element in an array asynchronously using the async_fn function (which simulates an asynchronous operation). It creates tasks for each item in the array, runs them concurrently, and collects the results.
+The try block waits for all tasks to complete using asyncio.gather. If any task is cancelled, it catches the CancelledError and prints a cancellation message.
+
+## Async_operation Function:
+
+This function simulates an asynchronous task (e.g., multiplying a number) that can be cancelled. It sleeps for 1 second to simulate a delay, and if the task is cancelled, it raises a CancelledError to stop further execution.
+
+### Cancel_operation Function:
+
+This function waits for 1.5 seconds (to allow some tasks to run) and then cancels all tasks by calling task.cancel(). This simulates cancelling the operation prematurely.
+
+### Main Function:
+
+This function is the entry point of the program. It sets up the array of data, creates tasks, and calls the async_map function. It also starts the task to cancel the operation after 1.5 seconds.
+
+### Running the Code:
+
+The asyncio.run(main()) line runs the entire program. It schedules all tasks and waits for them to finish or be cancelled.
