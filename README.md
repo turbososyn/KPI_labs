@@ -21,3 +21,23 @@ This is an example of an asynchronous function that simply returns the square of
 ### Demo:
 
 This is a demo function that shows how both functions work: async_map for asynchronous execution and debounce to add extra delay if a task is running too fast.
+
+# Lab 2 task:
+
+Create a Promise-based alternative to the async_map function and then write examples using both Promise-based and Async-Await solutions.
+
+## Explanation of the code:
+
+### Creating a Promise-based Alternative:
+Python doesn't have a native Promise object like JavaScript, but we can use asyncio.create_task() to simulate the asynchronous behavior of Promises. This creates a task that can run concurrently with other tasks.
+I created a helper function called promise_delay to wrap the asynchronous function and simulate the "Promise-like" behavior in Python. This wrapper is like the Promise constructor in JavaScript, which resolves the result asynchronously.
+
+### Implement the promise_map Function:
+The promise_map function is designed to map an asynchronous function (like async_square) onto an iterable and execute the functions concurrently.
+
+### Creating the Async-Await Solution:
+In the async-await solution, we simply use asyncio.gather (similar to Promise.all in JavaScript) to handle concurrent execution.
+The async_map function is an asynchronous version of map that runs all tasks concurrently.
+
+### Demonstrating the Promise and Async-Await Solutions:
+To demonstrate the Promise-based solution, we create a list of "promises" using promise_map, and then we wait for all of them to resolve using handle_promises.
