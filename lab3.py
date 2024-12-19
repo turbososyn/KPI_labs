@@ -20,3 +20,17 @@ async def async_operation(data, results, has_error):
         results.append(data * 2)  
     except asyncio.CancelledError:
         raise 
+async def cancel_operation(tasks):
+    await asyncio.sleep(1.5) 
+    for task in tasks:
+        task.cancel()
+async def main():
+    arr = [1, 2, 3]
+    tasks = []
+    results = []
+    task = asyncio.create_task(async_map(arr, async_operation))
+    tasks.append(task)
+    cancel_task = asyncio.create_task(cancel_operation(tasks))
+    await asyncio.gather(task, cancel_task)
+    print(f"Results: {results}")
+asyncio.run(main())
