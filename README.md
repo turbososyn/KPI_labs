@@ -76,3 +76,44 @@ This function is the entry point of the program. It sets up the array of data, c
 ### Running the Code:
 
 The asyncio.run(main()) line runs the entire program. It schedules all tasks and waits for them to finish or be cancelled.
+
+# Lab 4 task:
+
+Task 4 is about processing large datasets that don't fit into memory by using techniques like streaming or asynchronous iterators. Instead of loading all data at once, data is processed incrementally (one item at a time), which helps handle large volumes
+efficiently without overloading memory.
+
+## Key Concepts:
+
+### Asynchronous Iterators:
+In Python, asynchronous iterators allow for processing large datasets without blocking the execution. This is crucial for handling datasets that do not fit into memory all at once. The async for statement is used to consume an asynchronous generator.
+
+### Async/Await:
+
+The async keyword is used to declare a function as asynchronous. Inside the function, you can use await to pause execution until a result is ready (e.g., waiting for data fetching or processing to complete).
+
+### File Writing:
+
+Each processed result is written to a file (processed_data.txt) in append mode, ensuring that data is added progressively.
+
+## Explanation of the code:
+
+### Async_data_generator(start, end):
+
+This is an asynchronous generator that yields numbers from start to end.
+We use await asyncio.sleep(0.1) to simulate a delay (like an async API call or data processing). This allows for non-blocking behavior as it yields each item one by one.
+
+### Process_data(start, end, filename):
+
+This function processes each number yielded by async_data_generator.
+The processing step simply multiplies each number by 2.
+After processing, the result is written to a file (the file is opened in append mode, 'a'), so each result is added on a new line in the file.
+
+### Main():
+
+The main() function sets up the filename and defines the range of data to process (1 to 100 in this case).
+Before starting, it clears the file to ensure that the file is empty at the beginning.
+Then, it calls process_data() to start the asynchronous processing and writing of data to the file.
+
+### Asyncio.run(main()):
+
+This line runs the asynchronous event loop that executes the main() function.
